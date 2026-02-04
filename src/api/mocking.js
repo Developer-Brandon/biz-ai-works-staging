@@ -2,7 +2,7 @@
  * 임시 Mock 데이터
  */
 export function getMockConfigData(testAuthStore) {
-  const office = "krc"; // oci, komsco, krc
+  const office = "komsco"; // oci, komsco, krc
   const privateImageServerUrl = import.meta.env.VITE_IMAGE_SERVER_URL;
 
   testAuthStore.setRandomTestEmail(office);

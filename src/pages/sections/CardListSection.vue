@@ -65,7 +65,6 @@ const props = defineProps({
 
 const emit = defineEmits(["update:currentCardIndex", "agent-select"]);
 
-// 🔴 추가: dataStore의 agentList를 computed로 감싸기
 const aiAgentCards = computed(() => {
   console.log("📊 aiAgentCards computed 업데이트:", dataStore.aiAgentInfoList);
   return dataStore.aiAgentInfoList || [];

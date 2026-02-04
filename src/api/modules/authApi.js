@@ -81,7 +81,7 @@ async function getPublicKey() {
   // 🔀 환경별 엔드포인트 자동 선택
   const endpoint = getEndpoint(
     "/api/auth/public-key", // 로컬/원본 백엔드
-    "/api/auth/public-key" // Vercel 프록시
+    "/api/auth/public-key", // Vercel 프록시
   );
 
   console.log(`📤 [RSA Public Key 조회] ${endpoint}`);
@@ -128,7 +128,7 @@ async function login(encryptedData, encryptedAesKey, iv) {
   // 🔀 환경별 엔드포인트 자동 선택
   const endpoint = getEndpoint(
     "/api/auth/login", // 로컬/원본 백엔드
-    "/api/auth/login" // Vercel 프록시
+    "/api/auth/login", // Vercel 프록시
   );
 
   console.log(`📤 [로그인] ${endpoint}`);
@@ -167,7 +167,7 @@ async function refresh() {
   // 🔀 환경별 엔드포인트 자동 선택
   const endpoint = getEndpoint(
     "/api/auth/refresh", // 로컬/원본 백엔드
-    "/api/auth/refresh" // Vercel 프록시
+    "/api/auth/refresh", // Vercel 프록시
   );
 
   console.log(`📤 [토큰 갱신] ${endpoint}`);
@@ -229,7 +229,7 @@ async function changePassword(passwordData) {
   // 🔀 환경별 엔드포인트 자동 선택
   const endpoint = getEndpoint(
     "/api/auth/change-password", // 로컬/원본 백엔드
-    "/api/auth/change-password" // Vercel 프록시
+    "/api/auth/change-password", // Vercel 프록시
   );
 
   console.log(`📤 [비밀번호 변경] ${endpoint}`);
@@ -263,12 +263,6 @@ async function changePassword(passwordData) {
  *   passwordMatch: true
  * }
  *
- * @param {Object} passwordData - 초기 비밀번호 변경 데이터
- * @param {string} passwordData.email - 사용자 이메일
- * @param {string} passwordData.currentPassword - SHA256 해시된 초기 비밀번호
- * @param {string} passwordData.newPassword - 새로운 비밀번호 (최소 8자)
- * @param {string} passwordData.confirmPassword - 새로운 비밀번호 확인
- * @returns {Promise<Object>} 초기 비밀번호 변경 결과
  */
 async function changeInitialPassword(passwordData) {
   // 필수 필드 검증
@@ -299,7 +293,7 @@ async function changeInitialPassword(passwordData) {
   // 🔀 환경별 엔드포인트 자동 선택
   const endpoint = getEndpoint(
     "/api/auth/change-initial-password", // 로컬/원본 백엔드
-    "/auth/change-initial-password" // Vercel 프록시
+    "/auth/change-initial-password", // Vercel 프록시
   );
 
   console.log(`📤 [초기 비밀번호 변경] ${endpoint}`);
@@ -356,7 +350,7 @@ async function generateLoginPayload(credentials) {
   // ⚠️ 주의: 로컬과 배포의 경로가 다름!
   const endpoint = getEndpoint(
     "/api/auth/test/generate-login-payload", // 로컬/원본 백엔드
-    "/api/auth/login-payload" // Vercel 프록시
+    "/api/auth/login-payload", // Vercel 프록시
   );
 
   console.log(`📤 [로그인 페이로드 생성] ${endpoint}`);

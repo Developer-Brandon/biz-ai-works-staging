@@ -300,28 +300,24 @@ const isAiModelDropdownDisabled = computed(() => {
 });
 
 // ==================== Methods ====================
-
 const callAiAgentsAndModelStatus = async () => {
-  console.log("AI Agent 목록 로드 시작");
-  if (dataStore.aiAgentInfoList?.length === 0 && !dataStore.isAiAgentLoading) {
-    try {
-      await dataStore.loadAiAgentList();
-      console.log("✅ AI Agent 목록 로드 완료");
-    } catch (error) {
-      console.error("❌ AI Agent 목록 로드 실패:", error.message);
-    }
+  console.group("ChatInputSection 초기화");
+
+  try {
+    console.log("AI Agent 목록 로드 시작");
+    await dataStore.loadAiAgentList();
+    console.log("✅ AI Agent 목록 로드 완료");
+
+    console.log("모델 데이터 로드 시작");
+    await dataStore.loadModelUsageData();
+    console.log("✅ 모델 데이터 초기 로드 완료");
+
+    console.log("✅ ChatInputSection 초기화 완료");
+  } catch (error) {
+    console.error("❌ 초기화 중 오류 발생:", error.message);
+  } finally {
+    console.groupEnd();
   }
-  console.log("모델 데이터 로드 시작");
-  if (dataStore.modelInfoList?.length <= 1) {
-    try {
-      await dataStore.loadModelUsageData();
-      console.log("✅ 모델 데이터 초기 로드 완료");
-    } catch (error) {
-      console.error("❌ 모델 데이터 초기 로드 실패:", error.message);
-    }
-  }
-  console.log("✅ ChatInputSection 초기화 완료");
-  console.groupEnd();
 };
 
 /**
