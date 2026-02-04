@@ -1,0 +1,14 @@
+// 반응형 레이아웃을 위한 브레이크포인트
+/* 
+  사용 예시:
+  @media (min-width: $breakpoint-md) {
+    .container {
+      width: 100%;
+    }
+  }
+*/
+$breakpoint-phone: 768px; // 스마트폰 breakpoint
+$more-than-breakpoint-phone: 769px; // 스마트폰 보다 큰 breakpoint
+$breakpoint-desktop: 1024px; // 큰 화면 (데스크톱)
+$breakpoint-desktop-large-screen: 1280px; // 매우 큰 화면 (대형 데스크톱)
+$breakpoint-desktop-x-large-screen: 1920px; // 초대형 화면

@@ -1,0 +1,1110 @@
+/**
+ * ============================================================
+ * src/assets/styles/animations.scss
+ * ============================================================
+ * 
+ * 전체 프로젝트에서 재사용되는 애니메이션을 중앙에서 정의합니다.
+ * 
+ * 🎨 지침: 모든 UI/UX 변화에 부드럽고 트렌디한 애니메이션을 적용합니다.
+ * 
+ * 📁 프로젝트 구조:
+ * src/
+ * ├── assets/
+ * │   └── styles/
+ * │       ├── animations.scss      ← 현재 파일
+ * │       ├── _variables.scss
+ * │       ├── _mixins.scss
+ * │       └── main.scss
+ * ├── components/
+ * │   └── Button.vue               ← 이 파일에서 사용
+ * └── pages/
+ *
+ * 사용 예시:
+ * .element {
+ *   animation: fadeIn 0.3s ease-out;
+ * }
+ * 
+ * Vue3에서 사용:
+ * <div class="animate-fade-in">페이드인 효과</div>
+ * 
+ * Vue2와의 차이:
+ * - Vue2: transition 컴포넌트 (복잡함)
+ * - Vue3: animation 정의는 동일하지만 더 나은 성능 ✅
+ */
+
+/* ============================================================
+   📁 섹션 1: 페이드 (Fade) 애니메이션
+   ============================================================
+   
+   투명도(opacity) 변화 중심의 애니메이션
+   주로 요소의 등장/퇴장에 사용
+*/
+
+/**
+ * fadeIn: 투명 -> 불투명 (등장 효과)
+ * 
+ * 사용처:
+ * - 페이지 진입
+ * - 요소 추가
+ * - 모달/팝업 등장
+ * 
+ * 특징:
+ * - 가장 부드러운 효과
+ * - 빠른 속도 추천 (0.3s)
+ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/**
+ * fadeOut: 불투명 -> 투명 (퇴장 효과)
+ * 
+ * 사용처:
+ * - 페이지 이탈
+ * - 요소 제거
+ * - 모달/팝업 닫기
+ */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/**
+ * fadeInDown: 위에서 아래로 나타남
+ * 
+ * 사용처:
+ * - 헤더 진입
+ * - 드롭다운 메뉴
+ * - 상단 배너
+ * 
+ * 동작:
+ * 1. 위쪽(-30px)에서 시작
+ * 2. 투명 상태
+ * 3. 본래 위치로 내려오면서 나타남
+ */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/**
+ * fadeInUp: 아래에서 위로 나타남
+ * 
+ * 사용처:
+ * - 카드 목록
+ * - 콘텐츠 영역
+ * - 모달 등장
+ * - 버튼 영역
+ * 
+ * 특징:
+ * - 매우 트렌디한 효과
+ * - 최근 대부분의 모던 앱에서 사용
+ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/**
+ * fadeInLeft: 왼쪽에서 오른쪽으로 나타남
+ * 
+ * 사용처:
+ * - 사이드바 진입
+ * - 네비게이션 메뉴
+ * - 왼쪽 패널
+ */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/**
+ * fadeInRight: 오른쪽에서 왼쪽으로 나타남
+ * 
+ * 사용처:
+ * - 우측 패널
+ * - 알림 토스트
+ * - 우측 네비게이션
+ */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================================
+   📁 섹션 2: 슬라이드 (Slide) 애니메이션
+   ============================================================
+   
+   translate 변환 중심의 애니메이션
+   페이드인과 유사하지만 좀 더 강조된 움직임
+*/
+
+/**
+ * slideDown: 위에서 아래로 슬라이드
+ * 
+ * 사용처:
+ * - 드롭다운 메뉴
+ * - 아코디언
+ * - 추가 정보 표시
+ */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/**
+ * slideUp: 아래에서 위로 슬라이드
+ * 
+ * 사용처:
+ * - 바텀 시트
+ * - 하단 메뉴
+ * - 페이지 스크롤 시 상단 버튼 등장
+ */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/**
+ * slideLeft: 왼쪽으로 슬라이드 (100% 거리)
+ * 
+ * 사용처:
+ * - 완전 슬라이드 전환
+ * - 페이지 네비게이션
+ * - 캐러셀
+ */
+@keyframes slideLeft {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/**
+ * slideRight: 오른쪽으로 슬라이드
+ * 
+ * 사용처:
+ * - 뒤로가기 전환
+ * - 우측 패널 진입
+ * - 캐러셀 역방향
+ */
+@keyframes slideRight {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   📁 섹션 3: 스케일 (Scale) 애니메이션
+   ============================================================
+   
+   크기 변화(scale) 중심의 애니메이션
+   모달, 팝업, 카드 등에 자주 사용
+*/
+
+/**
+ * scaleIn: 작은 상태에서 정상 크기로 확대
+ * 
+ * 사용처:
+ * - 모달 등장
+ * - 팝업 표시
+ * - 카드 호버
+ * 
+ * 특징:
+ * - 포커스 끌기에 좋음
+ * - 중요한 요소에 추천
+ */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/**
+ * scaleOut: 정상 크기에서 작은 상태로 축소
+ * 
+ * 사용처:
+ * - 모달 닫기
+ * - 팝업 제거
+ * - 요소 축소
+ */
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/**
+ * scaleUp: 호버 시 약간 확대 (1.05배)
+ * 
+ * 사용처:
+ * - 아이콘 호버
+ * - 버튼 호버 (scaleDown 대신)
+ * - 카드 호버
+ * 
+ * 팁:
+ * - animation-fill-mode: forwards 추천
+ * - 호버 상태로 남음
+ */
+@keyframes scaleUp {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+/**
+ * scaleDown: 약간 축소 (0.95배)
+ * 
+ * 사용처:
+ * - 버튼 클릭
+ * - 누르는 효과
+ * - 강조 해제
+ */
+@keyframes scaleDown {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.95);
+  }
+}
+
+/* ============================================================
+   📁 섹션 4: 회전/회전 애니메이션
+   ============================================================
+   
+   rotate 변환 중심의 애니메이션
+   로딩 인디케이터, 강조 효과 등에 사용
+*/
+
+/**
+ * spin: 계속 회전 (로딩 인디케이터)
+ * 
+ * 사용처:
+ * - 로딩 스피너
+ * - 진행 중 표시
+ * - 동작 중 아이콘
+ * 
+ * 특징:
+ * - animation-iteration-count: infinite
+ * - animation-timing-function: linear 추천
+ */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/**
+ * bounce: 튀는 효과
+ * 
+ * 사용처:
+ * - 강조 애니메이션
+ * - 배지 알림
+ * - 스크롤 인디케이터
+ * 
+ * 특징:
+ * - 꼭 튀는 공 같은 느낌
+ * - ease-in-out 추천
+ */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/**
+ * pulse: 맥박 효과 (강조)
+ * 
+ * 사용처:
+ * - 새 알림 표시
+ * - 중요 요소 강조
+ * - "지금 해보세요" 표시
+ * 
+ * 특징:
+ * - 부드럽고 자연스러움
+ * - 2초 주기 추천
+ */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/**
+ * wiggle: 좌우로 흔들리는 효과
+ * 
+ * 사용처:
+ * - 에러 메시지
+ * - 입력 검증 실패
+ * - 주의 필요한 상황
+ * 
+ * 특징:
+ * - 주의 끌기에 효과적
+ * - 부정적인 상황에 추천
+ */
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/**
+ * rotate: 계속 회전 (spin과 유사)
+ * 
+ * 사용처:
+ * - 로딩 아이콘
+ * - 진행 표시
+ * - 애니메이션이 필요한 아이콘
+ */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================
+   📁 섹션 5: 배경색 변화
+   ============================================================
+   
+   background-color 변화 중심의 애니메이션
+   강조, 하이라이트 효과 등에 사용
+*/
+
+/**
+ * colorPulse: 배경색이 서서히 변함
+ * 
+ * 사용처:
+ * - 강조 효과
+ * - 알림 표시
+ * - 변경된 요소 강조
+ * 
+ * 특징:
+ * - 부드러운 색상 변화
+ * - 사용자의 주의 끌기
+ * - 2초 이상 추천
+ */
+@keyframes colorPulse {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(102, 126, 234, 0.1);
+  }
+}
+
+/**
+ * highlightPulse: 하이라이트 효과
+ * 
+ * 사용처:
+ * - 새로운 항목 강조
+ * - 중요한 업데이트
+ * - 업그레이드된 기능
+ */
+@keyframes highlightPulse {
+  0%,
+  100% {
+    background-color: rgba(255, 193, 7, 0);
+  }
+  50% {
+    background-color: rgba(255, 193, 7, 0.2);
+  }
+}
+
+/**
+ * successPulse: 성공 상태 강조
+ * 
+ * 사용처:
+ * - 작업 완료 표시
+ * - 성공 메시지
+ * - 승인된 상태
+ */
+@keyframes successPulse {
+  0%,
+  100% {
+    background-color: rgba(76, 175, 80, 0);
+  }
+  50% {
+    background-color: rgba(76, 175, 80, 0.2);
+  }
+}
+
+/* ============================================================
+   📁 섹션 6: 문자/텍스트 애니메이션
+   ============================================================
+   
+   텍스트 관련 애니메이션
+   타이핑, AI 응답 표현 등에 사용
+*/
+
+/**
+ * typing: 텍스트가 한 글자씩 나타나는 효과
+ * 
+ * 사용처:
+ * - AI 응답 표현
+ * - 로딩 텍스트
+ * - 타이핑 시뮬레이션
+ * 
+ * 특징:
+ * - width 0% -> 100%로 변함
+ * - overflow: hidden 필수
+ * - white-space: nowrap 필수
+ * 
+ * 사용 예시:
+ * <span class="typing-effect">AI가 답변을 작성 중...</span>
+ */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/**
+ * blink: 커서 깜박임
+ * 
+ * 사용처:
+ * - 텍스트 입력 커서
+ * - 활성 상태 표시
+ * - 대기 중 표시
+ * 
+ * 특징:
+ * - border로 구현
+ * - 0.5초 주기 추천
+ */
+@keyframes blink {
+  0%,
+  49% {
+    border-color: transparent;
+  }
+  50%,
+  100% {
+    border-color: currentColor;
+  }
+}
+
+/**
+ * textGlow: 텍스트 빛나는 효과
+ * 
+ * 사용처:
+ * - 강조된 제목
+ * - 주요 버튼 텍스트
+ * - 로고/브랜드 텍스트
+ * 
+ * 특징:
+ * - text-shadow 사용
+ * - 반짝이는 효과
+ * - 부드러운 강조
+ */
+@keyframes textGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 5px var(--primary-color);
+  }
+  50% {
+    text-shadow: 0 0 15px var(--primary-color);
+  }
+}
+
+/**
+ * underlineExpand: 밑줄 확장 효과
+ * 
+ * 사용처:
+ * - 호버 링크
+ * - 메뉴 강조
+ * - 활성 탭 표시
+ */
+@keyframes underlineExpand {
+  from {
+    border-bottom-width: 1px;
+  }
+  to {
+    border-bottom-width: 2px;
+  }
+}
+
+/* ============================================================
+   📁 섹션 7: 토스(Toss) 스타일 로딩 애니메이션
+   ============================================================
+   
+   버튼의 로딩 상태를 나타내는 점 애니메이션
+   "로그인 중 ." → "로그인 중 .." → "로그인 중 ..." 반복
+   
+   특징:
+   - 3개의 점이 순차적으로 나타났다 사라짐
+   - 부드럽고 트렌디한 효과
+   - 사용자의 대기 시간을 덜 지루하게 만듦
+   
+   사용처:
+   - 버튼 로딩 상태
+   - API 요청 중
+   - 데이터 처리 중
+*/
+
+/**
+ * dot-1: 첫 번째 점 애니메이션
+ * 
+ * 타이밍:
+ * - 0ms 딜레이
+ * - 즉시 시작
+ * - 가장 먼저 사라짐
+ */
+@keyframes dot-1 {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0.3;
+  }
+}
+
+/**
+ * dot-2: 두 번째 점 애니메이션
+ * 
+ * 타이밍:
+ * - 200ms 딜레이
+ * - 첫 번째 점이 사라진 후 시작
+ * - 중간에 활성
+ */
+@keyframes dot-2 {
+  0% {
+    opacity: 0.3;
+  }
+  25% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+/**
+ * dot-3: 세 번째 점 애니메이션
+ * 
+ * 타이밍:
+ * - 400ms 딜레이
+ * - 두 번째 점이 활성일 때 활성
+ * - 마지막에 나타남
+ */
+@keyframes dot-3 {
+  0%,
+  50% {
+    opacity: 0.3;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/**
+ * flowDots: 토스 스타일 점 흐름 애니메이션
+ * 
+ * 대안 애니메이션 (위의 dot-1, dot-2, dot-3과 함께 사용)
+ * 
+ * 특징:
+ * - 더 부드러운 흐름
+ * - 연속적인 효과
+ * - 자연스러운 로딩 표현
+ */
+@keyframes flowDots {
+  0% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/**
+ * typingDots: 타이핑 중 점 애니메이션
+ * 
+ * 사용처:
+ * - 메시지 입력 중
+ * - AI 생각 중
+ * - 프로세싱 중
+ * 
+ * 특징:
+ * - 점들이 위아래로 튀는 효과
+ * - 더 활발한 로딩 표시
+ */
+@keyframes typingDots {
+  0%,
+  25% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-8px);
+  }
+  75%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   📁 섹션 8: Utility 클래스 - 애니메이션 적용
+   ============================================================
+   
+   HTML에 직접 클래스로 애니메이션을 적용할 수 있는 유틸리티
+   
+   사용 예시:
+   <div class="animate-fade-in">페이드인 효과</div>
+   <div class="animate-scale-in animate-delay-2">지연 스케일 효과</div>
+   
+   Vue3에서:
+   <div :class="{ 'animate-fade-in': isVisible }">동적 애니메이션</div>
+*/
+
+/* 페이드 애니메이션 유틸리티 */
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-fade-out {
+  animation: fadeOut 0.3s ease-out;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.4s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.4s ease-out;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.4s ease-out;
+}
+
+/* 슬라이드 애니메이션 유틸리티 */
+
+.animate-slide-down {
+  animation: slideDown 0.4s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out;
+}
+
+.animate-slide-left {
+  animation: slideLeft 0.4s ease-out;
+}
+
+.animate-slide-right {
+  animation: slideRight 0.4s ease-out;
+}
+
+/* 스케일 애니메이션 유틸리티 */
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+.animate-scale-out {
+  animation: scaleOut 0.3s ease-out;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.3s ease-out;
+}
+
+.animate-scale-down {
+  animation: scaleDown 0.2s ease-out;
+}
+
+/* 회전 애니메이션 유틸리티 */
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+.animate-rotate {
+  animation: rotate 1s linear infinite;
+}
+
+/* 색상 애니메이션 유틸리티 */
+
+.animate-color-pulse {
+  animation: colorPulse 2s ease-in-out infinite;
+}
+
+.animate-highlight-pulse {
+  animation: highlightPulse 2s ease-in-out infinite;
+}
+
+.animate-success-pulse {
+  animation: successPulse 2s ease-in-out infinite;
+}
+
+/* 텍스트 애니메이션 유틸리티 */
+
+.animate-typing {
+  animation: typing 3s steps(40, end);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.animate-text-glow {
+  animation: textGlow 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   📁 섹션 9: Utility 클래스 - 애니메이션 지연
+   ============================================================
+   
+   여러 요소가 차례대로 애니메이션되도록 지연을 주는 클래스들
+   
+   사용 예시:
+   <div class="animate-scale-in animate-delay-1">첫 번째</div>
+   <div class="animate-scale-in animate-delay-2">두 번째 (0.2s 지연)</div>
+   <div class="animate-scale-in animate-delay-3">세 번째 (0.3s 지연)</div>
+   
+   팁:
+   - 리스트 아이템들을 차례대로 나타낼 때 유용
+   - animation-fill-mode: both 추천
+   - max-delay를 정하고 그에 맞게 조정
+*/
+
+.animate-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.animate-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-3 {
+  animation-delay: 0.3s;
+}
+
+.animate-delay-4 {
+  animation-delay: 0.4s;
+}
+
+.animate-delay-5 {
+  animation-delay: 0.5s;
+}
+
+.animate-delay-6 {
+  animation-delay: 0.6s;
+}
+
+.animate-delay-7 {
+  animation-delay: 0.7s;
+}
+
+.animate-delay-8 {
+  animation-delay: 0.8s;
+}
+
+.animate-delay-9 {
+  animation-delay: 0.9s;
+}
+
+.animate-delay-10 {
+  animation-delay: 1s;
+}
+
+/* ============================================================
+   📁 섹션 10: 고급 조합 애니메이션
+   ============================================================
+   
+   여러 애니메이션을 조합한 고급 이펙트
+   특수한 경우에만 사용
+*/
+
+/**
+ * popIn: 튀어 나오는 효과
+ * 
+ * 사용처:
+ * - 알림 배지
+ * - 팝업 모달
+ * - 강조 요소
+ * 
+ * 구성:
+ * - scaleIn + bounce 결합
+ */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-pop-in {
+  animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/**
+ * smoothFadeSlide: 부드러운 페이드 + 슬라이드
+ * 
+ * 사용처:
+ * - 페이지 전환
+ * - 섹션 이동
+ * - 모달 진입
+ */
+@keyframes smoothFadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-smooth-fade-slide {
+  animation: smoothFadeSlide 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/**
+ * elasticBounce: 탄력 있는 바운스
+ * 
+ * 사용처:
+ * - 버튼 클릭 피드백
+ * - 카드 등장
+ * - 강조 애니메이션
+ */
+@keyframes elasticBounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-elastic-bounce {
+  animation: elasticBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/**
+ * shimmer: 반짝이는 효과 (스켈레톤 로딩)
+ * 
+ * 사용처:
+ * - 로딩 상태 UI
+ * - 스켈레톤 컴포넌트
+ * - 데이터 로딩 중
+ */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+}
+
+/* ============================================================
+   📁 섹션 11: 반응형 애니메이션 조정
+   ============================================================
+   
+   모바일 디바이스에서는 애니메이션을 줄여서 성능 최적화
+   
+   팁:
+   - 모바일에서는 더 빠른 속도 추천
+   - 복잡한 애니메이션은 웹에서만 사용
+   - battery-saving 고려
+*/
+
+@media (max-width: 768px) {
+  /**
+   * 모바일에서 애니메이션 속도 조정
+   * 
+   * 장점:
+   * - 배터리 절약
+   * - 반응성 향상
+   * - 부드러운 스크롤
+   */
+
+  .animate-fade-in {
+    animation-duration: 0.2s;
+  }
+
+  .animate-slide-up,
+  .animate-slide-down {
+    animation-duration: 0.3s;
+  }
+
+  .animate-scale-in {
+    animation-duration: 0.2s;
+  }
+
+  /**
+   * 모바일에서 복잡한 애니메이션 비활성화
+   * (성능 최적화)
+   */
+  .animate-shimmer {
+    animation: none;
+    background: #f0f0f0;
+  }
+}
+
+/* ============================================================
+   📁 섹션 12: Prefers Reduced Motion (접근성)
+   ============================================================
+   
+   사용자가 "애니메이션 줄임" 설정을 한 경우
+   모든 애니메이션을 비활성화하고 즉시 전환
+   
+   중요: 접근성 표준 준수
+*/
+
+@media (prefers-reduced-motion: reduce) {
+  /**
+   * 모든 애니메이션 비활성화
+   * 
+   * 사용자가 명시적으로 애니메이션을 줄이라고 설정한 경우
+   * 즉시 상태 변화만 보여줌
+   */
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

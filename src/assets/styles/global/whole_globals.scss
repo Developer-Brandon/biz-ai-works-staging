@@ -1,0 +1,247 @@
+/**
+ * src/assets/styles/globals.scss
+ * 
+ * 애플리케이션 전체에 적용되는 전역 스타일입니다.
+ * 
+ * 포함 내용:
+ * 1. CSS Reset - 브라우저 기본값 초기화
+ * 2. 제목 스타일 - 기본적인 h1~h6 스타일
+ * 3. 폰트 정의 - 기본 폰트 패밀리 및 크기
+ * 4. 리스트 스타일 - ul, ol 기본 스타일
+ * 5. 입력 요소 스타일 - input, textarea, select 기본 스타일
+ * 6. 버튼 스타일 - 기본 버튼 스타일
+ * 7. 스크롤바 스타일 - 커스텀 스크롤바 (기본)
+ * 8. 유틸리티 클래스 - 자주 사용하는 유틸리티 클래스
+ */
+
+/* ==================== 1. CSS Reset - 브라우저 기본값 초기화 ==================== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  height: 100%;
+  word-break: break-all;
+  overflow: hidden;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Apple SD Gothic Neo", "Noto Sans", "Malgun Gothic", Arial,
+    sans-serif;
+  line-height: 1.6;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+/* ==================== 2. 제목 스타일  ==================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 1.1rem;
+}
+h5 {
+  font-size: 1rem;
+}
+h6 {
+  font-size: 0.9rem;
+}
+
+/* ==================== 3.텍스트 스타일 ==================== */
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #667eea;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #764ba2;
+  }
+}
+
+/* ==================== 4.리스트 스타일 ==================== */
+ul,
+ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* ==================== 5.입력 요소 스타일 ==================== */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.75rem;
+  transition: all 0.3s ease;
+  &:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+  &:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+  }
+}
+
+/* ==================== 6.버튼 스타일 (기본) ==================== */
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+/* ==================== 7.스크롤바 스타일 ==================== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+
+  &:hover {
+    background: #555;
+  }
+}
+
+/* ==================== 8.유틸리티 클래스 ==================== */
+
+/* 텍스트 숨김(SEO용) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Flexbox 유틸리티 */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 간격 유틸리티 */
+.mt-1 {
+  margin-top: 0.5rem;
+}
+.mt-2 {
+  margin-top: 1rem;
+}
+.mt-3 {
+  margin-top: 1.5rem;
+}
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+.mb-2 {
+  margin-bottom: 1rem;
+}
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+/* 텍스트 정렬 */
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+/*색상 유틸리티 */
+.text-muted {
+  color: #999;
+}
+.text-danger {
+  color: #e74c3c;
+}
+.text-success {
+  color: #27ae60;
+}
+
+/* 드래그 방지 */
+.no-drag {
+  cursor: default;
+  user-select: none;
+}
