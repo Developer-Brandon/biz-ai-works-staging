@@ -18,7 +18,7 @@ export const useTestAuthStore = defineStore("test-auth", () => {
         "komsco_admin@demo.co.kr",
       ];
     } else if (office === "krc") {
-      testEmailList = ["krc_bmt@demo.co.kr"];
+      testEmailList = ["krc@demo.co.kr"];
     }
 
     const shuffled = [...testEmailList];
