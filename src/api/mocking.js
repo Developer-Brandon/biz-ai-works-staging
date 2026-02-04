@@ -147,7 +147,7 @@ function createKrcConfig(imageServerUrl) {
         main: {
           aiAgentCards: [
             {
-              id: "5a7e3de0-4e2b-4694-a25f-cf4f8134df10",
+              id: "120f6b3b-e402-415a-bad4-28f060317b3e",
               order: "1",
               type: "chatCard",
               cardThumbnailUrl: "/krc/card_image1.png",
@@ -157,7 +157,7 @@ function createKrcConfig(imageServerUrl) {
               questionList: [],
             },
             {
-              id: "83e20630-46e2-45e9-8ee8-26396b98267b",
+              id: "120f6b3b-e402-415a-bad4-28f060317b3e",
               order: "2",
               type: "chatCard",
               cardThumbnailUrl: "/krc/card_image2.png",
@@ -167,7 +167,7 @@ function createKrcConfig(imageServerUrl) {
               questionList: [],
             },
             {
-              id: "3",
+              id: "120f6b3b-e402-415a-bad4-28f060317b3e",
               order: "3",
               type: "questionCard",
               cardThumbnailUrl: "",
